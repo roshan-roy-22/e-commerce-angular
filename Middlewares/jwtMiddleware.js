@@ -7,6 +7,7 @@ const jwtMiddleware = (req, res,next) => {
         if (token) {
             const jwtResponse = jwt.verify(token, process.env.JWT_SECRET)
             req.payload = jwtResponse.userId
+            console.log('hello');
             next()
         } else {
             res.status(406).json("Token is not available...")
